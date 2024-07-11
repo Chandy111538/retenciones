@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RETENCIONES</title>
+    <meta charset="UTF-8">
+
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #222222;
+          color: #ffffff;
+      }
+
+      h2 {
+          color: #ffffff;
+          margin-left: 50px;
+          text-decoration: underline;
+      }
+      table{
+        margin: 0 auto;
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+      }
+      th {
+      background-color: #222222;
+      text-align: center;
+      border-bottom: 1px  solid #ddd;
+     
+      }      
+      td {        
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+      }
+      .wide-column {
+        width: 30%; /* Ajusta el valor según tus necesidades */
+      }
+      .wide-text {
+        width: 100%; /* Ajusta el valor según tus necesidades */
+      }
+      input[type="button"] {
+          background-color: #004466;
+          color: #ffffff;
+          display: block;
+          margin: 0 auto;
+          font-size: 20px;
+          width: 150px;
+      }
+      select {
+          background-color: #004466;
+          color: #ffffff;
+          display: block;
+          margin: 0 auto;
+          font-size: 20px;
+          width: 150px;
+      }
+      input[type="text"],
+      input[type="date"],
+      input[type="number"],
+      input[type="submit"] {
+          padding: 10px;
+          border: 1px solid #cccccc;
+          border-radius: 3px;
+          margin-bottom: 10px;
+          background-color: #555555;
+          color: #ffffff;
+          margin: 0 auto;
+          display: block;
+          font-size: 20px;
+          width: 90%;
+      }
+      
+      th:nth-child(n+3) {
+      display: none;
+      }  
+	  
+      td:nth-child(n+3) {
+        display: none;
+      }
+      button{
+        margin: 0 auto;
+        display: block;
+      }
+      input::placeholder {
+          color: #ffffff;
+      }
+      .centered-heading {
+      text-align: center;
+      }
+
+    </style>
+
+    <script>
+      
+      function verificarCuit(nro) {
+        var cuitValue = document.getElementById('cuit'+nro).value;
+        var url = 'https://www.cuitonline.com/search.php?q=' + cuitValue;
+        window.open(url, '_blank');
+      }
+      
+      var columnToShow = 2; // Columna a mostrar siguiente
+
+      function mostrarSiguienteColumna() {
+      var table = document.getElementById("tabla");
+      var rows = table.rows;
+
+        // Muestra la siguiente columna oculta
+        if (columnToShow < rows[0].cells.length) {
+          for (var i = 0; i < rows.length; i++) {
+            rows[i].cells[columnToShow].style.display = "table-cell";
+          }
+          columnToShow++;
+        }
+      }
+	  
+      function ocultarColumnaAnterior() {
+          var table = document.getElementById("tabla");
+          var rows = table.rows;
+
+          // Oculta la columna anterior
+          if (columnToShow > 2) {
+            columnToShow--;
+            for (var i = 0; i < rows.length; i++) {
+              rows[i].cells[columnToShow].style.display = "none";
+            }
+          }
+      }
+      function formatCurrency(input) {
+        var value = parseFloat(input.value);
+        input.value = value.toFixed(2);
+      }
+
+    </script>
+</head>
+<body>
+  <h2>Formulario Solicitud de Retenciones Practicadas - PAGINA WEB PROPIEDAD DEL CHANDY - PROHIBIDO EL USO DEL PRESENTE SIN LA DEBIDA AUTORIZACION</h2><br>
+  <form id="formulario" action="generarCuadro.php" method="post" target="_blank">
+  <!--<form id="formulario" action="generarCuadro.php"  action="generarPDF.php" method="post" target="_blank">-->
+  <table id="tabla">
+    <tr>
+      <th>CONCEPTO</th>
+      <th>EMPRESA 1</th>
+      <th>EMPRESA 2</th>
+      <th>EMPRESA 3</th>
+      <th>EMPRESA 4</th>
+      <th>EMPRESA 5</th>
+      <th>EMPRESA 6</th>
+      <th>EMPRESA 7</th>
+      <th>EMPRESA 8</th> 
+    </tr>
+    <tr>
+      <td>Nº Vale:</td>
+      <td><input type="text" name="nroVale1" id="nroVale1" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale2" id="nroVale2" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale3" id="nroVale3" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale4" id="nroVale4" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale5" id="nroVale5" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale6" id="nroVale6" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale7" id="nroVale7" placeholder="0000/23"></td>
+      <td><input type="text" name="nroVale8" id="nroVale8" placeholder="0000/23"></td>
+    </tr>
+    <tr>
+      <td>Nº de Transferencia a Cargos Personal:</td>
+      <td><input type="text" name="nroTransferencia1" id="nroTransferencia1"></td>
+      <td><input type="text" name="nroTransferencia2" id="nroTransferencia2"></td>
+      <td><input type="text" name="nroTransferencia3" id="nroTransferencia3"></td>
+      <td><input type="text" name="nroTransferencia4" id="nroTransferencia4"></td>
+      <td><input type="text" name="nroTransferencia5" id="nroTransferencia5"></td>
+      <td><input type="text" name="nroTransferencia6" id="nroTransferencia6"></td>
+      <td><input type="text" name="nroTransferencia7" id="nroTransferencia7"></td>
+      <td><input type="text" name="nroTransferencia8" id="nroTransferencia8"></td>
+    </tr>    
+    <tr>
+      <td>CUIT de la Empresa:</td>
+      <td><input type="text" name= "cuit1" id="cuit1" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit2" id="cuit2" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit3" id="cuit3" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit4" id="cuit4" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit5" id="cuit5" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit6" id="cuit6" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit7" id="cuit7" placeholder="00000000000"></td>
+      <td><input type="text" name= "cuit8" id="cuit8" placeholder="00000000000"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="button" name="check1" id="check1" onclick="verificarCuit(1)" value="VERIFICAR"></td>
+      <td><input type="button" name="check2" id="check2" onclick="verificarCuit(2)" value="VERIFICAR"></td>
+      <td><input type="button" name="check3" id="check3" onclick="verificarCuit(3)" value="VERIFICAR"></td>
+      <td><input type="button" name="check4" id="check4" onclick="verificarCuit(4)" value="VERIFICAR"></td>
+      <td><input type="button" name="check5" id="check5" onclick="verificarCuit(5)" value="VERIFICAR"></td>
+      <td><input type="button" name="check6" id="check6" onclick="verificarCuit(6)" value="VERIFICAR"></td>
+      <td><input type="button" name="check7" id="check7" onclick="verificarCuit(7)" value="VERIFICAR"></td>
+      <td><input type="button" name="check8" id="check8" onclick="verificarCuit(8)" value="VERIFICAR"></td>
+    </tr>
+    <tr>
+      <td>Razón Social de la Empresa:</td>
+      <td><input type="text" name="razon1" id="razon1"></td>
+      <td><input type="text" name="razon2" id="razon2"></td>
+      <td><input type="text" name="razon3" id="razon3"></td>
+      <td><input type="text" name="razon4" id="razon4"></td>
+      <td><input type="text" name="razon5" id="razon5"></td>
+      <td><input type="text" name="razon6" id="razon6"></td>
+      <td><input type="text" name="razon7" id="razon7"></td>
+      <td><input type="text" name="razon8" id="razon8"></td>      
+    </tr>
+    <tr>
+      <td>Domicilio de la Empresa:</td>
+      <td><input type="text" name="domicilio1" id="domicilio1"></td>
+      <td><input type="text" name="domicilio2" id="domicilio2"></td>
+      <td><input type="text" name="domicilio3" id="domicilio3"></td>
+      <td><input type="text" name="domicilio4" id="domicilio4"></td>
+      <td><input type="text" name="domicilio5" id="domicilio5"></td>
+      <td><input type="text" name="domicilio6" id="domicilio6"></td>
+      <td><input type="text" name="domicilio7" id="domicilio7"></td>
+      <td><input type="text" name="domicilio8" id="domicilio8"></td>
+    </tr>
+    <tr>
+      <td>Nº de Factura:</td>
+      <td><input type="text" name="nroFactura1" id="nroFactura1" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura2" id="nroFactura2" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura3" id="nroFactura3" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura4" id="nroFactura4" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura5" id="nroFactura5" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura6" id="nroFactura6" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura7" id="nroFactura7" placeholder="0000-00000000"></td>
+      <td><input type="text" name="nroFactura8" id="nroFactura8" placeholder="0000-00000000"></td>
+    </tr>
+    <tr>
+      <td>Importe TOTAL FACTUADO:</td>
+      <td><input type="text" name="importeFacturado1" id="importeFacturado1" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado2" id="importeFacturado2" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado3" id="importeFacturado3" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado4" id="importeFacturado4" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado5" id="importeFacturado5" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado6" id="importeFacturado6" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado7" id="importeFacturado7" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+      <td><input type="text" name="importeFacturado8" id="importeFacturado8" step="0.01" onblur="formatCurrency(this)" placeholder="00000.00" ></td>
+    </tr>
+    <tr>
+      <td>Tipo de Retencion:</td>
+      <td><select name="opcion1" id="opcion1"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion2" id="opcion2"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion3" id="opcion3"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion4" id="opcion4"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion5" id="opcion5"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion6" id="opcion6"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion7" id="opcion7"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+      <td><select name="opcion8" id="opcion8"><option value="SERVICIOS">SERVICIOS</option><option value="BIENES">BIENES</option></select></td>
+    </tr>
+    <tr>
+      <td>Elije la opcion deseada:</td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones1" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias1" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones2" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias2" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones3" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias3" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones4" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias4" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones5" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias5" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones6" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias6" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones7" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias7" value="Texto de Transferencia">
+      </div></td>
+      <td><div class="button-group">
+        <input type="submit" name="btn_cuadro_retenciones8" value="Cuadro de Retencion">
+        <input type="submit" name="btn_texto_transferencias8" value="Texto de Transferencia">
+      </div></td>      
+    </tr>
+  </table>
+    <input type="submit" name="btn_texto_gde" value="Generar Texto GDE" style="width: 200px;">
+    <h3 class="centered-heading">NOTA GDE:</h3>
+    <input type="text" name="notaGDE" id="notaGDE" placeholder="Ejemplo: NO-1234-12345678-APN-CHUE#PNA" style="width: 500px;">
+    <h3 class="centered-heading">Fecha de la Transferencia a la cuenta Cargos del Personal:</h3>
+    <input type="date" name="fechaTransferencia" style="width: 178px;"> 
+    <input type="submit" name="btn_texto_moi" value="Generar MOI" style="width: 200px;">
+    </form>
+<br>
+  <button onclick="mostrarSiguienteColumna()">AGREGAR EMPRESAS</button>
+  <button onclick="ocultarColumnaAnterior()">QUITAR EMPRESAS</button>
+</body>
+</html>
